@@ -27,7 +27,6 @@ export const getVirusFiles = async (): Promise<VirusFile[]> => {
     const parts = fileName.split('.');
     const extension = parts[parts.length - 1];
     const filename = fileName
-    console.log(filename, extension)
     
     
     // 生成描述
