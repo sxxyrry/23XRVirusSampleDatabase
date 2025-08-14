@@ -64,20 +64,7 @@ const fetchMusicFiles = async () => {
     console.error('获取音乐文件失败:', err);
     
     // 如果获取失败，使用默认的音乐列表
-    tracks.value = [
-      {
-        id: 1,
-        title: "古风纯音乐.mp3",
-        artist: "未知艺术家",
-        src: "https://raw.githubusercontent.com/li958633/virusmuisc/main/%E5%8F%A4%E9%A3%8E%E7%BA%AF%E9%9F%B3%E4%B9%90.mp3"
-      },
-      {
-        id: 2,
-        title: "Creator.mp3",
-        artist: "未知艺术家",
-        src: "https://raw.githubusercontent.com/li958633/virusmuisc/main/Creator.mp3"
-      }
-    ];
+    tracks.value = [];
   } finally {
     loadingTracks.value = false;
   }
@@ -147,7 +134,7 @@ const updateProgress = () => {
 const formatTime = (seconds: number) => {
   const min = Math.floor(seconds / 60);
   const sec = Math.floor(seconds % 60);
-  return `${min}:${sec < 10 ? '0' : ''}${sec}`;
+  return `${min}: ${sec < 10 ? '0' : ''}${sec}`;
 };
 
 const setVolume = (value: number) => {
@@ -187,6 +174,7 @@ onMounted(() => {
   // 加载音乐文件
   fetchMusicFiles();
   if (audioElement.value) {
+    audioElement.value.play();
     audioElement.value.pause();
   }
 });
@@ -199,7 +187,7 @@ onMounted(() => {
         <img style="height: 50px;width: 50px;border-radius: 50%;" src="/Images/b_7521c364216e8645dc3d2df0ba07040f.jpg" alt="b_7521c364216e8645dc3d2df0ba07040f.jpg">
         <img style="height: 50px;width: 50px;border-radius: 50%;" src="/Images/b_4fafeea0a6cc55c497bc9a6b756bc438.jpg" alt="b_4fafeea0a6cc55c497bc9a6b756bc438.jpg">
         <a href="/" class="logo">病毒样本数据库</a>
-        <p style="color: white;">出事别找我们！</p>
+        <p style="color: white;">仅供学习交流使用！（出事别找我们！）</p>
       </div>
     </nav>
 
@@ -234,7 +222,9 @@ onMounted(() => {
                 <div class="file-info">
                   <span>{{ virus.fileType }}, {{ virus.fileSize }}</span>
                 </div>
-                <a download :href="virus.downloadPath" class="download-btn">下载</a>
+                <a download :href="virus.downloadPath" class="btn">下载</a>
+                <a v-if="virus.analysisReport" :href="virus.analysisReport" target="_blank" class="btn">分析报告</a>
+                <a v-else class="btn-dis">分析报告</a>
               </div>
             </div>
           </div>
@@ -258,7 +248,7 @@ onMounted(() => {
           </div>
         </template>
         <p class="end">特别感谢：代码小梓 贡献病毒库样本（qq号：1931688073）</p>
-        <p class="end">网站搭建：@是星星与然然呀</p>
+        <p class="end">网站搭建：@是星星与然然呀 <a href="https://space.bilibili.com/1532090388" target="_blank" class="btn">BiliBili</a></p>
       </div>
       <!-- 音乐播放器 -->
       <!-- 在音乐播放器部分添加加载状态 -->
@@ -334,7 +324,6 @@ onMounted(() => {
       @timeupdate="updateProgress"
       @loadedmetadata="duration = audioElement?.duration || 0"
       @ended="handleEnded"
-      autoplay
     ></audio>
   </div>
 </template>
@@ -643,7 +632,7 @@ header h1 {
   font-size: 1.2rem;
 }
 
-.download-btn {
+.btn {
   background-color: #27ae60;
   color: white;
   text-decoration: none;
@@ -653,8 +642,19 @@ header h1 {
   transition: background-color 0.3s ease;
 }
 
-.download-btn:hover {
+.btn:hover {
   background-color: #219653;
+}
+
+.btn-dis {
+  background-color: #166135;
+  cursor: not-allowed;
+  color: #ccc;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .pagination {
