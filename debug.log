@@ -1,0 +1,10 @@
+[0813/225036.599:WARNING:dxgi_adapter_duplicator.cc(106)] Cannot initialize any DxgiOutputDuplicator instance.
+[0813/225036.600:WARNING:dxgi_duplicator_controller.cc(274)] Failed to initialize DxgiAdapterDuplicator on adapter 1
+[0813/225036.600:WARNING:dxgi_adapter_duplicator.cc(106)] Cannot initialize any DxgiOutputDuplicator instance.
+[0813/225036.600:WARNING:dxgi_duplicator_controller.cc(274)] Failed to initialize DxgiAdapterDuplicator on adapter 2
+[0813/225036.624:WARNING:dxgi_duplicator_controller.cc(95)] Count of references reaches zero, DxgiDuplicatorController will be unloaded.
+[0813/225547.735:WARNING:dxgi_adapter_duplicator.cc(106)] Cannot initialize any DxgiOutputDuplicator instance.
+[0813/225547.736:WARNING:dxgi_duplicator_controller.cc(274)] Failed to initialize DxgiAdapterDuplicator on adapter 1
+[0813/225547.736:WARNING:dxgi_adapter_duplicator.cc(106)] Cannot initialize any DxgiOutputDuplicator instance.
+[0813/225547.736:WARNING:dxgi_duplicator_controller.cc(274)] Failed to initialize DxgiAdapterDuplicator on adapter 2
+[0813/225547.752:WARNING:dxgi_duplicator_controller.cc(95)] Count of references reaches zero, DxgiDuplicatorController will be unloaded.

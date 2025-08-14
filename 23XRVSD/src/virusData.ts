@@ -67,7 +67,7 @@ export const getVirusFiles = async (): Promise<VirusFile[]> => {
       description: description,
       fileType: extension,
       fileSize: fileSize,
-      downloadPath: `/Virus/${fileName}`
+      downloadPath: `./Virus/${fileName}`
     };
   });
 };
